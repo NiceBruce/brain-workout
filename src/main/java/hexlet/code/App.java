@@ -2,38 +2,55 @@ package hexlet.code;
 
 import java.util.Scanner;
 import static hexlet.code.Cli.greetUser;
-import static hexlet.code.EvenGame.playEven;
+import static hexlet.code.Engine.gamePlay;
+
 public class App {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String[] gameMenu = {"Please enter the game number and press Enter.", "1 - Greet", "2 - Even", "0 - Exit"};
+    private static String[] gameMenu =
+        {"Please enter the game number and press Enter.",
+        "1 - Greet",
+        "2 - Even", // Even.gameID + " - " + Even.gameName
+        "3 - Calc", // Calc.gameID + " - " + Calc.gameName
+        "0 - Exit"};
 
+    public static void printMenu() {
         for (var position : gameMenu) {
             System.out.println(position);
         }
+    }
 
+    public static int getUserChoice() {
+
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
         int userChoice = scanner.nextInt();
         System.out.println();
 
-        switch (userChoice) {
+        return userChoice;
+    }
+
+    public static void launchApp() {
+
+        printMenu();
+
+        switch (getUserChoice()) {
             case 0:
                 System.out.println("Bye!");
                 break;
             case 1:
-                System.out.println("Welcome to the Brain Games!");
                 greetUser();
                 break;
             case 2:
-                System.out.println("Welcome to the Brain Games!");
-                String userName = greetUser();
-                playEven(userName);
+                gamePlay(greetUser(), "Even");
+                break;
+            case 3:
+                gamePlay(greetUser(), "Calc");
+                break;
             default:
-                System.out.println(":]");
                 break;
         }
-
-
+    }
+    public static void main(String[] args) {
+        launchApp();
     }
 }
