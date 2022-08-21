@@ -9,8 +9,9 @@ public class App {
     private static String[] gameMenu =
         {"Please enter the game number and press Enter.",
         "1 - Greet",
-        "2 - Even", // Even.gameID + " - " + Even.gameName
-        "3 - Calc", // Calc.gameID + " - " + Calc.gameName
+        "2 - Even",
+        "3 - Calc",
+        "4 - Gcd",
         "0 - Exit"};
 
     public static void printMenu() {
@@ -45,6 +46,9 @@ public class App {
                 break;
             case 3:
                 gamePlay(greetUser(), "Calc");
+                break;
+            case 4:
+                gamePlay(greetUser(), "GCD");
                 break;
             default:
                 break;

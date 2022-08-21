@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
+import hexlet.code.games.Gcd;
 
 public class Engine {
 
@@ -53,6 +54,10 @@ public class Engine {
             case "Calc":
                 askGeneralQuestion(Calc.getGeneralQuestion());
                 Calc.play();
+                break;
+            case "GCD":
+                askGeneralQuestion(Gcd.getGeneralQuestion());
+                Gcd.play();
                 break;
             default:
                 break;

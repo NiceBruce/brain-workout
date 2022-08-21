@@ -3,6 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import java.util.Random;
 import java.util.Scanner;
+
 public class Calc {
     private static final int RANGE = 10;
     private static String gameName = "Calc";
@@ -33,10 +34,8 @@ public class Calc {
 
         System.out.println("Question: " + operand1 + " " + mathSymbol + " " + operand2);
         Engine.setRightAnswer(Integer.toString(expression));
-        //Engine.rightAnswer = Integer.toString(expression);
 
         System.out.print("Your answer: ");
         Engine.setUserAnswer(scanner.next());
-        //Engine.userAnswer = scanner.next();
     }
 }
