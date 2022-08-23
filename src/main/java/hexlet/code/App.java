@@ -12,6 +12,7 @@ public class App {
         "2 - Even",
         "3 - Calc",
         "4 - Gcd",
+        "5 - Progression",
         "0 - Exit"};
 
     public static void printMenu() {
@@ -49,6 +50,9 @@ public class App {
                 break;
             case 4:
                 gamePlay(greetUser(), "GCD");
+                break;
+            case 5:
+                gamePlay(greetUser(), "Progression");
                 break;
             default:
                 break;

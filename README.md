@@ -12,3 +12,6 @@ https://asciinema.org/a/DcZ9uE03RHfOxWQEMH3h7VZ3A
 
 ### asciinema STEP 7: ADD GAME GCD
 https://asciinema.org/a/QsNzJY757o3WFXIGu8iGDXbWD
+
+### asciinema STEP 8: ADD GAME PROGRESSION
+https://asciinema.org/a/1585RDZUIt4IbRNMupUvnwfpd

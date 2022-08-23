@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
 
 public class Engine {
 
@@ -59,6 +60,10 @@ public class Engine {
                 askGeneralQuestion(Gcd.getGeneralQuestion());
                 Gcd.play();
                 break;
+            case "Progression":
+                askGeneralQuestion(Progression.getGeneralQuestion());
+                Progression.play();
+                break;
             default:
                 break;
         }
@@ -75,10 +80,12 @@ public class Engine {
 
                 System.out.println("Correct!");
                 countToWin++;
+
                 if (countToWin == WIN_CONDITION) {
                     System.out.println("Congratulations, " + userName + "!");
                     break;
                 }
+
             } else {
                 System.out.println(getSorryMessage(userAnswer, rightAnswer) + userName + "!");
                 break;
