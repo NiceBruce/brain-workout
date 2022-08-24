@@ -1,10 +1,11 @@
 package hexlet.code;
 
 import java.util.Scanner;
+import hexlet.code.games.Games;
 import static hexlet.code.Cli.greetUser;
 import static hexlet.code.Engine.gamePlay;
 
-public class App {
+public class App implements Games {
 
     private static String[] gameMenu =
         {"Please enter the game number and press Enter.",
@@ -54,19 +55,19 @@ public class App {
             case 1:
                 greetUser();
                 break;
-            case 2:
+            case EVEN:
                 gamePlay(greetUser(), "Even");
                 break;
-            case 3:
+            case CALC:
                 gamePlay(greetUser(), "Calc");
                 break;
-            case 4:
+            case GCD:
                 gamePlay(greetUser(), "GCD");
                 break;
-            case 5:
+            case PROGRESSION:
                 gamePlay(greetUser(), "Progression");
                 break;
-            case 6:
+            case PRIME:
                 gamePlay(greetUser(), "Prime");
                 break;
             default:
@@ -75,6 +76,7 @@ public class App {
                 break;
         }
     }
+
     public static void main(String[] args) {
         launchApp();
     }
