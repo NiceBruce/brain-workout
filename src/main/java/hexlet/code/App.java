@@ -13,6 +13,7 @@ public class App {
         "3 - Calc",
         "4 - Gcd",
         "5 - Progression",
+        "6 - Prime",
         "0 - Exit"};
 
     public static void printMenu() {
@@ -25,7 +26,18 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
-        int userChoice = scanner.nextInt();
+        boolean currentInput = false;
+        int userChoice = 0;
+
+        while (!currentInput) {
+            try {
+                userChoice = Integer.parseInt(scanner.next());
+                currentInput = true;
+            } catch (NumberFormatException e) {
+                System.out.println("\n*****************\nEnter a number!\n*****************\n");
+                System.out.print("Your choice: ");
+            }
+        }
         System.out.println();
 
         return userChoice;
@@ -54,7 +66,12 @@ public class App {
             case 5:
                 gamePlay(greetUser(), "Progression");
                 break;
+            case 6:
+                gamePlay(greetUser(), "Prime");
+                break;
             default:
+                System.out.println("Let's play! Choose a game!\n");
+                launchApp();
                 break;
         }
     }

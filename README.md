@@ -15,3 +15,6 @@ https://asciinema.org/a/QsNzJY757o3WFXIGu8iGDXbWD
 
 ### asciinema STEP 8: ADD GAME PROGRESSION
 https://asciinema.org/a/1585RDZUIt4IbRNMupUvnwfpd
+
+### asciinema STEP 8: ADD GAME PRIME
+https://asciinema.org/a/GdugWChwUDWY1mfo8fvEmB9zN

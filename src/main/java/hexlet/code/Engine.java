@@ -4,6 +4,7 @@ import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Gcd;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 public class Engine {
 
@@ -64,13 +65,15 @@ public class Engine {
                 askGeneralQuestion(Progression.getGeneralQuestion());
                 Progression.play();
                 break;
+            case "Prime":
+                askGeneralQuestion(Prime.getGeneralQuestion());
+                Prime.play();
+                break;
             default:
                 break;
         }
     }
     public static void gamePlay(String userName, String gameName) {
-
-        System.out.println("Welcome to the Brain Games!");
 
         while (countToWin <= WIN_CONDITION) {
 
