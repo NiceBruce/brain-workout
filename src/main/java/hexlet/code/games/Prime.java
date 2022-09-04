@@ -1,18 +1,13 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
 import java.util.Random;
-import java.util.Scanner;
 
-public class Prime {
+public class Prime implements Games {
 
+    private static final int NUMBER_OF_GAME_DATA = 3;
+    private String[] gameData = new String[NUMBER_OF_GAME_DATA];
     private static final int RANGE = 20; // increase difficulty
-    private static String gameName = "Prime";
     private static String generalQuestion = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-
-    public static String getGameName() {
-        return  gameName;
-    }
 
     public static String getGeneralQuestion() {
         return generalQuestion;
@@ -29,17 +24,16 @@ public class Prime {
         return (number < 2) ? "no" : "yes";
     }
 
-    public static void play() {
+    public final String[] play() {
 
         Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
 
         int number = random.nextInt(RANGE);
 
-        System.out.println("Question: " + number);
-        Engine.setRightAnswer(isPrime(number));
+        gameData[0] = getGeneralQuestion();
+        gameData[1] = Integer.toString(number);
+        gameData[2] = isPrime(number);
 
-        System.out.print("Your answer: ");
-        Engine.setUserAnswer(scanner.next());
+        return gameData;
     }
 }

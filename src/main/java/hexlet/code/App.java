@@ -1,21 +1,32 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import hexlet.code.games.Games;
+
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 import static hexlet.code.Cli.greetUser;
-import static hexlet.code.Engine.gamePlay;
 
-public class App implements Games {
+public class App {
 
+    private static final int EXIT = 0;
+    private static final int GREET = 1;
+    private static final int EVEN = 2;
+    private static final int CALC = 3;
+    private static final int GCD = 4;
+    private static final int PROGRESSION = 5;
+    private static final int PRIME = 6;
     private static String[] gameMenu =
         {"Please enter the game number and press Enter.",
-        "1 - Greet",
-        "2 - Even",
-        "3 - Calc",
-        "4 - Gcd",
-        "5 - Progression",
-        "6 - Prime",
-        "0 - Exit"};
+            GREET + " - Greet",
+            EVEN + " - Even",
+            CALC + " - Calc",
+            GCD + " - Gcd",
+            PROGRESSION + " - Progression",
+            PRIME + " - Prime",
+            EXIT + " - Exit"};
 
     public static void printMenu() {
         for (var position : gameMenu) {
@@ -27,18 +38,17 @@ public class App implements Games {
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
-        boolean currentInput = false;
         int userChoice = 0;
 
-        while (!currentInput) {
-            try {
-                userChoice = Integer.parseInt(scanner.next());
-                currentInput = true;
-            } catch (NumberFormatException e) {
-                System.out.println("\n*****************\nEnter a number!\n*****************\n");
-                System.out.print("Your choice: ");
-            }
+        try {
+            userChoice = Integer.parseInt(scanner.next());
+        } catch (NumberFormatException e) {
+            System.out.println("\n****************************************************\n"
+                    + "* You need to enter a game Number to play the game *"
+                    + "\n****************************************************\n");
+            System.exit(0);
         }
+
         System.out.println();
 
         return userChoice;
@@ -49,30 +59,31 @@ public class App implements Games {
         printMenu();
 
         switch (getUserChoice()) {
-            case 0:
+            case EXIT:
                 System.out.println("Bye!");
                 break;
-            case 1:
+            case GREET:
                 greetUser();
                 break;
             case EVEN:
-                gamePlay(greetUser(), "Even");
+                Engine.start(new Even());
                 break;
             case CALC:
-                gamePlay(greetUser(), "Calc");
+                Engine.start(new Calc());
                 break;
             case GCD:
-                gamePlay(greetUser(), "GCD");
+                Engine.start(new Gcd());
                 break;
             case PROGRESSION:
-                gamePlay(greetUser(), "Progression");
+                Engine.start(new Progression());
                 break;
             case PRIME:
-                gamePlay(greetUser(), "Prime");
+                Engine.start(new Prime());
                 break;
             default:
-                System.out.println("Let's play! Choose a game!\n");
-                launchApp();
+                System.out.println("\n****************************************************\n"
+                        + "* You need to enter a game Number to play the game *"
+                        + "\n****************************************************\n");
                 break;
         }
     }

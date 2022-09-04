@@ -1,23 +1,22 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Calc {
+public class Calc implements Games {
+
+    private static final int NUMBER_OF_GAME_DATA = 3;
+    private String[] gameData = new String[NUMBER_OF_GAME_DATA];
     private static final int RANGE = 10;
-    private static String gameName = "Calc";
+    private static final char[] MATH_OPERATOR = {'+', '-', '*'};
     private static String generalQuestion = "What is the result of the expression?";
 
-    public static String getGameName() {
-        return gameName;
-    }
 
     public static String getGeneralQuestion() {
         return generalQuestion;
     }
 
-    public static void play() {
+    public final String[] play() {
 
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
@@ -25,17 +24,28 @@ public class Calc {
         int operand1 = random.nextInt(RANGE);
         int operand2 = random.nextInt(RANGE);
 
-        char[] mathOperator = {'+', '-', '*'};
-        char mathSymbol = mathOperator[random.nextInt(mathOperator.length)];
+        char mathSymbol = MATH_OPERATOR[random.nextInt(MATH_OPERATOR.length)];
+        int expression = 0;
 
-        var expression = (mathSymbol == '+') ? operand1 + operand2
-                : (mathSymbol == '-') ? operand1 - operand2
-                : operand1 * operand2;
+        switch (mathSymbol) {
+            case '+':
+                expression = operand1 + operand2;
+                break;
+            case '-':
+                expression = operand1 - operand2;
+                break;
+            case '*':
+                expression = operand1 * operand2;
+                break;
+            default:
+                break;
+        }
 
-        System.out.println("Question: " + operand1 + " " + mathSymbol + " " + operand2);
-        Engine.setRightAnswer(Integer.toString(expression));
+        gameData[0] = getGeneralQuestion();
+        gameData[1] = operand1 + " " + mathSymbol + " " + operand2;
+        gameData[2] = Integer.toString(expression);
 
-        System.out.print("Your answer: ");
-        Engine.setUserAnswer(scanner.next());
+        return gameData;
+
     }
 }

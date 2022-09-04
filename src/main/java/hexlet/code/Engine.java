@@ -1,83 +1,34 @@
 package hexlet.code;
 
-import hexlet.code.games.Even;
-import hexlet.code.games.Calc;
-import hexlet.code.games.Gcd;
-import hexlet.code.games.Progression;
-import hexlet.code.games.Prime;
+import hexlet.code.games.Games;
+import java.util.Scanner;
+import static hexlet.code.Cli.greetUser;
 
-public class Engine {
-
-    private static String rightAnswer;
-    private static String userAnswer;
+public class Engine  {
     private static int countToWin = 0;
     private static final int WIN_CONDITION = 3;
 
+    public static void start(Games game) {
 
-    public static String getRightAnswer() {
-        return rightAnswer;
-    }
-
-    public static String getUserAnswer() {
-        return userAnswer;
-    }
-
-    public static String setRightAnswer(String expression) {
-        rightAnswer = expression;
-        return rightAnswer;
-    }
-
-    public static String setUserAnswer(String expression) {
-        userAnswer = expression;
-        return userAnswer;
-    }
-
-    public static void askGeneralQuestion(String generalQuestion) {
-        if (countToWin < 1) {
-            System.out.println(generalQuestion);
-        }
-    }
-
-    public static String getSorryMessage(String userInput, String answer) {
-
-        String sorryMessage =  "'" + userInput + "' is wrong answer ;(. Correct answer is was '"
-                + answer + "'. \nLet's try again, ";
-
-        return sorryMessage;
-    }
-
-    public static void gameSelector(String gameName) {
-
-        switch (gameName) {
-            case "Even":
-                askGeneralQuestion(Even.getGeneralQuestion());
-                Even.play();
-                break;
-            case "Calc":
-                askGeneralQuestion(Calc.getGeneralQuestion());
-                Calc.play();
-                break;
-            case "GCD":
-                askGeneralQuestion(Gcd.getGeneralQuestion());
-                Gcd.play();
-                break;
-            case "Progression":
-                askGeneralQuestion(Progression.getGeneralQuestion());
-                Progression.play();
-                break;
-            case "Prime":
-                askGeneralQuestion(Prime.getGeneralQuestion());
-                Prime.play();
-                break;
-            default:
-                break;
-        }
-    }
-    public static void gamePlay(String userName, String gameName) {
+        String userName = "";
+        Scanner scanner = new Scanner(System.in);
 
         while (countToWin <= WIN_CONDITION) {
 
-            gameSelector(gameName);
+            String[] gameData = game.play();
+
+            if (countToWin == 0) {
+                userName = greetUser();
+                String generalQuestion = gameData[0];
+                System.out.println(generalQuestion);
+            }
+
+            String rightAnswer = gameData[2];
+            String userAnswer = "";
+
+            System.out.println("Question: " + gameData[1]);
+            System.out.print("Your answer: ");
+            userAnswer = scanner.next();
 
             if (userAnswer.equals(rightAnswer)) {
 
@@ -90,7 +41,8 @@ public class Engine {
                 }
 
             } else {
-                System.out.println(getSorryMessage(userAnswer, rightAnswer) + userName + "!");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer is was '"
+                                            + rightAnswer + "'. \nLet's try again, " + userName + "!");
                 break;
             }
         }

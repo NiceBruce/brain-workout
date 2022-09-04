@@ -1,22 +1,19 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
 import java.util.Random;
-import java.util.Scanner;
 
-public class Progression {
+public class Progression implements Games {
+
+    private static final int NUMBER_OF_GAME_DATA = 3;
+    private String[] gameData = new String[NUMBER_OF_GAME_DATA];
+    private static int hiddenElement = 0;
     private static final int MAX_ARR_LENGTH = 10;
     private static final int MIN_ARR_LENGTH = 5;
     private static final int FIRST_EL_GENERATE = 100;
     private static final int MAX_STEP_GENERATE = 20;
-
     private static final int MIN_STEP_GENERATE = 2;
-    private static String gameName = "GCD";
-    private static String generalQuestion = "Find the greatest common divisor of given numbers.";
 
-    public static String getGameName() {
-        return  gameName;
-    }
+    private static String generalQuestion = "What number is missing in the progression?";
 
     public static String getGeneralQuestion() {
         return generalQuestion;
@@ -27,46 +24,41 @@ public class Progression {
         Random random = new Random();
         int[] resultArr = new int[length];
         int increment = random.nextInt(MIN_STEP_GENERATE, MAX_STEP_GENERATE);
+        resultArr[0] =  (random.nextInt(FIRST_EL_GENERATE));
 
-        for (int element = 0; element < resultArr.length; element++) {
-            if (element == 0) {
-                resultArr[element] = (random.nextInt(FIRST_EL_GENERATE));
-                continue;
-            }
+        for (int element = 1; element < resultArr.length; element++) {
             resultArr[element] = resultArr[element - 1] + increment;
         }
 
         return resultArr;
     }
 
-    public static int getHiddenElement(int[] arr) {
+    public static String getTxtForQuestion(int[] arr) {
 
         Random random = new Random();
-        int hiddenElement = random.nextInt(arr.length);
+        hiddenElement = random.nextInt(arr.length);
+        String txtForQuestion = "";
 
-        System.out.print("Question: ");
         for (int element = 0; element < arr.length; element++) {
             if (element == hiddenElement) {
-                System.out.print(".. ");
+                txtForQuestion += ".. ";
                 continue;
             }
-            System.out.print(arr[element] + " ");
+            txtForQuestion += arr[element] + " ";
         }
-        System.out.println();
 
-        return hiddenElement;
+        return txtForQuestion;
     }
-    public static void play() {
+    public final String[] play() {
 
         Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
 
         int[] numArray = (createArray(random.nextInt(MIN_ARR_LENGTH, MAX_ARR_LENGTH)));
-        int hiddenElement = getHiddenElement(numArray);
 
-        Engine.setRightAnswer(Integer.toString(numArray[hiddenElement]));
+        gameData[0] = getGeneralQuestion();
+        gameData[1] = getTxtForQuestion(numArray);
+        gameData[2] = Integer.toString(numArray[hiddenElement]);
 
-        System.out.print("Your answer: ");
-        Engine.setUserAnswer(scanner.next());
+        return gameData;
     }
 }

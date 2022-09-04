@@ -1,33 +1,22 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
 import java.util.Random;
-import java.util.Scanner;
-
-public class Even {
-
-    private static String gameName = "Even";
+public class Even implements Games {
+    private static final int NUMBER_OF_GAME_DATA = 3;
+    private String[] gameData = new String[NUMBER_OF_GAME_DATA];
     private static String generalQuestion = "Answer 'yes' if number even otherwise answer 'no'.";
-
-    public static String getGameName() {
-        return gameName;
-    }
-
     public static String getGeneralQuestion() {
         return generalQuestion;
     }
-    public static void play() {
+    public final String[] play() {
 
         Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
-
         int number = random.nextInt();
 
-        System.out.println("Question: " + number);
-        Engine.setRightAnswer((number % 2 == 0) ? "yes" : "no");
+        gameData[0] = getGeneralQuestion();
+        gameData[1] = Integer.toString(number);
+        gameData[2] = ((number % 2 == 0) ? "yes" : "no");
 
-        System.out.print("Your answer: ");
-        Engine.setUserAnswer(scanner.next());
-
+        return gameData;
     }
 }
