@@ -2,11 +2,22 @@ package hexlet.code;
 
 import hexlet.code.games.Games;
 import java.util.Scanner;
-import static hexlet.code.Cli.greetUser;
+
 
 public class Engine  {
     private static int countToWin = 0;
     private static final int WIN_CONDITION = 3;
+
+    public static String greetUser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String userName = scanner.next();
+
+        System.out.println("Hello, " + userName + "!");
+        return userName;
+    };
 
     public static void start(Games game) {
 

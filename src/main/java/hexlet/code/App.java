@@ -7,7 +7,7 @@ import hexlet.code.games.Even;
 import hexlet.code.games.Gcd;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
-import static hexlet.code.Cli.greetUser;
+
 
 public class App {
 
@@ -63,7 +63,7 @@ public class App {
                 System.out.println("Bye!");
                 break;
             case GREET:
-                greetUser();
+                Engine.greetUser();
                 break;
             case EVEN:
                 Engine.start(new Even());
