@@ -3,21 +3,20 @@ package hexlet.code.games;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Calc implements Games {
+public class Calc implements Game {
 
-    private static final int NUMBER_OF_GAME_DATA = 3;
-    private String[] gameData = new String[NUMBER_OF_GAME_DATA];
     private static final int RANGE = 10;
     private static final char[] MATH_OPERATOR = {'+', '-', '*'};
     private static String generalQuestion = "What is the result of the expression?";
 
 
-    public static String getGeneralQuestion() {
+    public final String getGeneralQuestion() {
         return generalQuestion;
     }
 
-    public final String[] play() {
+    public final String[] getGameData() {
 
+        String[] gameData = new String[GAME_DATA_LEN];
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
@@ -38,12 +37,11 @@ public class Calc implements Games {
                 expression = operand1 * operand2;
                 break;
             default:
-                break;
+                throw new IllegalArgumentException("Unexpected math symbol " + mathSymbol);
         }
 
-        gameData[0] = getGeneralQuestion();
-        gameData[1] = operand1 + " " + mathSymbol + " " + operand2;
-        gameData[2] = Integer.toString(expression);
+        gameData[0] = operand1 + " " + mathSymbol + " " + operand2;
+        gameData[1] = Integer.toString(expression);
 
         return gameData;
 

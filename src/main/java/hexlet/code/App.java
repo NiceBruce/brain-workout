@@ -9,6 +9,7 @@ import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
 
+
 public class App {
 
     private static final int EXIT = 0;
@@ -63,7 +64,7 @@ public class App {
                 System.out.println("Bye!");
                 break;
             case GREET:
-                Engine.greetUser();
+                Cli.greetUser();
                 break;
             case EVEN:
                 Engine.start(new Even());

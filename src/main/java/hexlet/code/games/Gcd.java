@@ -2,15 +2,12 @@ package hexlet.code.games;
 
 import java.util.Random;
 
-public class Gcd implements Games {
-
-    private static final int NUMBER_OF_GAME_DATA = 3;
-    private String[] gameData = new String[NUMBER_OF_GAME_DATA];
+public class Gcd implements Game {
     private static final int RANGE = 99;
     private static final int STARTS_NUMBER = 1;
     private static String generalQuestion = "Find the greatest common divisor of given numbers.";
 
-    public static String getGeneralQuestion() {
+    public final String getGeneralQuestion() {
         return generalQuestion;
     }
 
@@ -29,16 +26,16 @@ public class Gcd implements Games {
         return divider;
     }
 
-    public final String[] play() {
+    public final String[] getGameData() {
 
+        String[] gameData = new String[GAME_DATA_LEN];
         Random random = new Random();
 
         int operand1 = random.nextInt(RANGE);
         int operand2 = random.nextInt(STARTS_NUMBER, RANGE);
 
-        gameData[0] = getGeneralQuestion();
-        gameData[1] = operand1 + " " + operand2;
-        gameData[2] = Integer.toString(getDivider(operand1, operand2));
+        gameData[0] = operand1 + " " + operand2;
+        gameData[1] = Integer.toString(getDivider(operand1, operand2));
 
         return gameData;
     }

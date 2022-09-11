@@ -2,10 +2,7 @@ package hexlet.code.games;
 
 import java.util.Random;
 
-public class Progression implements Games {
-
-    private static final int NUMBER_OF_GAME_DATA = 3;
-    private String[] gameData = new String[NUMBER_OF_GAME_DATA];
+public class Progression implements Game {
     private static int hiddenElement = 0;
     private static final int MAX_ARR_LENGTH = 10;
     private static final int MIN_ARR_LENGTH = 5;
@@ -15,7 +12,7 @@ public class Progression implements Games {
 
     private static String generalQuestion = "What number is missing in the progression?";
 
-    public static String getGeneralQuestion() {
+    public final String getGeneralQuestion() {
         return generalQuestion;
     }
 
@@ -49,15 +46,15 @@ public class Progression implements Games {
 
         return txtForQuestion;
     }
-    public final String[] play() {
+    public final String[] getGameData() {
 
+        String[] gameData = new String[GAME_DATA_LEN];
         Random random = new Random();
 
         int[] numArray = (createArray(random.nextInt(MIN_ARR_LENGTH, MAX_ARR_LENGTH)));
 
-        gameData[0] = getGeneralQuestion();
-        gameData[1] = getTxtForQuestion(numArray);
-        gameData[2] = Integer.toString(numArray[hiddenElement]);
+        gameData[0] = getTxtForQuestion(numArray);
+        gameData[1] = Integer.toString(numArray[hiddenElement]);
 
         return gameData;
     }
