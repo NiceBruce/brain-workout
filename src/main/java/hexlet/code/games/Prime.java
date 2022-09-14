@@ -10,15 +10,15 @@ public class Prime implements Game {
         return generalQuestion;
     }
 
-    public static String isPrime(int number) {
+    public static boolean isPrime(int number) {
 
         for (int i = 2; i < number; i++) {
             if (number % i == 0) {
-                return "no";
+                return false;
             }
         }
 
-        return (number < 2) ? "no" : "yes";
+        return (number < 2) ? false : true;
     }
 
     public final String[] getGameData() {
@@ -29,7 +29,7 @@ public class Prime implements Game {
         int number = random.nextInt(RANGE);
 
         gameData[0] = Integer.toString(number);
-        gameData[1] = isPrime(number);
+        gameData[1] = isPrime(number) ? "yes" : "no";
 
         return gameData;
     }
