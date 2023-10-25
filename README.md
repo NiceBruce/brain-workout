@@ -20,3 +20,7 @@
 
 ### CodeClimate
 <a href="https://codeclimate.com/github/NiceBruce/java-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/34f684b47423bf697000/maintainability" /></a>
+
+### Example how it works
+[![asciicast](https://asciinema.org/a/W61vqKirwvZeoDU97AIddsNiR.svg)](https://asciinema.org/a/W61vqKirwvZeoDU97AIddsNiR)
+ 
